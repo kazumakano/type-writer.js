@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", cursorInterval: number = 400, typingInterval: number = 200, delay: number = 0): JSX.Element {
+export default function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", cursorInterval: number = 400, typingInterval: number = 200, delay: number = 0): string {
   const [cursorIsOn, setCursorIsOn] = useState<boolean>(false)
   const [currentText, setCurrentText] = useState<string>("")
 
@@ -15,9 +15,5 @@ function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", cursorInterv
     }
   }, [setCurrentText])
 
-  return (
-    <samp>
-      {currentText}{cursorIsOn ? cursor : " "}
-    </samp>
-  )
+  return currentText + (cursorIsOn ? cursor : " ")
 }
