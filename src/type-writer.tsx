@@ -11,7 +11,7 @@ export default function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|
 
   useEffect(() => {
     for (let i = 0; i < text.length; i++) {
-      window.setTimeout(setCurrentText, delay + i * typingInterval, text.slice(0, i + 1))
+      window.setTimeout(setCurrentText, delay + i * typingInterval, text.slice(0, i + 1))    // type character
     }
   }, [setCurrentText])
 
