@@ -1,6 +1,6 @@
 # type-writer.js
 This is React hook to show text like type writer.
-You can access demo site by clicking [here](kazumakano.github.io/type-writer.js/).
+You can access demo site by clicking [here](https://kazumakano.github.io/type-writer.js/).
 
 ## Usage
 You can use this hook in your code as following:
