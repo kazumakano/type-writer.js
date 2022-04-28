@@ -140,5 +140,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "homepage": "https://kazumakano.github.io/type-writer.js/"
 }
