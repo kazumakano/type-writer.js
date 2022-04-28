@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 
 
-export default function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", cursorInterval: number = 400, typingInterval: number = 200, delay: number = 0): string {
+export default function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", charInterval: number = 200, wordInterval: number = 400, lineInterval: number = 800, cursorInterval: number = 400, delay: number = 0): string {
   const [cursorIsOn, setCursorIsOn] = useState<boolean>(false)
   const [currentText, setCurrentText] = useState<string>("")
 
   useEffect(() => {
-    window.setTimeout(setCursorIsOn, cursorInterval, !cursorIsOn)    // blink cursor
+    window.setTimeout(setCursorIsOn, cursorInterval, !cursorIsOn)
   }, [cursorIsOn, setCursorIsOn])
 
   useEffect(() => {
+    let time = delay
+
     for (let i = 0; i < text.length; i++) {
-      window.setTimeout(setCurrentText, delay + i * typingInterval, text.slice(0, i + 1))    // type character
+      if (text.charAt(i) == "\n") {
+        time += lineInterval
+      }
+      else if (text.charAt(i) == " ") {
+        time += wordInterval
+      }
+      else {
+        time += charInterval
+      }
+      window.setTimeout(setCurrentText, time, text.slice(0, i + 1))
     }
   }, [setCurrentText])
 
