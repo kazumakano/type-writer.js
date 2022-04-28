@@ -2,11 +2,13 @@ import { useEffect, useState } from "react"
 
 
 export default function useTypeWriter(text: string, cursor: "|" | "_" | " " = "|", cursorInterval: number = 400, charInterval: number = 100, lineInterval: number = 400, delay: number = 0): string {
-  const [cursorIsOn, setCursorIsOn] = useState<boolean>(false)
+  const [cursorIsOn, setCursorIsOn] = useState<boolean>(true)
   const [currentText, setCurrentText] = useState<string>("")
 
   useEffect(() => {
-    window.setTimeout(setCursorIsOn, cursorInterval, !cursorIsOn)
+    if (cursorInterval !== 0) {
+      window.setTimeout(setCursorIsOn, cursorInterval, !cursorIsOn)   
+    }
   }, [cursorInterval, cursorIsOn, setCursorIsOn])
 
   useEffect(() => {
