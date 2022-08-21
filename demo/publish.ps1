@@ -1,6 +1,6 @@
-Copy-Item -Path ../src/type-writer.tsx -Destination src/type-writer.tsx -Force
+Copy-Item -Path ../src/type-writer.ts -Destination src/type-writer.ts -Force
 yarn build
 New-Item ../docs/.nojekyll
-git add src/type-writer.tsx ../docs/
+git add src/type-writer.ts ../docs/
 git commit -m "build"
 git push
